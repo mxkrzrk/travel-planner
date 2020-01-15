@@ -4,3 +4,6 @@
 
 ## Project summary
 The project is a travel application.
+
+## License
+`travel-app` is MIT licensed.
