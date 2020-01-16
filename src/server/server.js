@@ -13,4 +13,4 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Serves static folder
-app.use(express.static("./src/client/views/"));
+app.use(express.static("./dist"));
