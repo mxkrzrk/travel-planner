@@ -1,0 +1,58 @@
+// Mobile
+.button-add-trip--mobile {
+  background-color: $secondary-color;
+  height: 60px;
+  width: 60px;
+  border-radius: $border-radius-circle;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: $one-space;
+  box-shadow: $shadow-box $shadow-box-color;
+
+  .button-add-trip_icon--mobile {
+    color: $orange-color;
+    font-size: 25px;
+  }
+}
+
+.button-add-trip--mobile:active {
+  background-color: $orange-color;
+
+  .button-add-trip_icon--mobile {
+    color: $secondary-color;
+  }
+}
+
+// Desktop
+.button-add-trip {
+  width: 100%;
+  padding: 0 $double-space;
+  box-shadow: $shadow-box $shadow-box-color;
+  border-radius: $border-radius-card;
+  background-color: $secondary-color;
+  cursor: pointer;
+
+  .button-add-trip_icon {
+    padding: $double-space;
+    color: $orange-color;
+  }
+
+  .button-add-trip_title {
+    margin-bottom: 0;
+    padding: $double-space;
+    color: $light-color;
+  }
+}
+
+.button-add-trip:active {
+  background-color: $orange-color;
+
+  .button-add-trip_icon {
+    color: $secondary-color;
+  }
+
+  .button-add-trip_title {
+    color: $dark-color;
+  }
+}

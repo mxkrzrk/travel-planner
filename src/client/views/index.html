@@ -23,9 +23,27 @@
         <h1 class="nav_title">Travel planner</h1>
       </nav>
     </header>
-    <main>
-      <!-- Trip create button -->
-      <div></div>
+    <main class="container">
+      <!-- Trip create button mobile -->
+      <div
+        class="button-add-trip--mobile d-xl-none d-lg-none d-md-flex d-sm-flex d-flex align-items-center justify-content-center"
+      >
+        <i class="fas fa-plus button-add-trip_icon--mobile"></i>
+      </div>
+      <!-- Trip create button desktop -->
+      <div
+        class="button-add-trip d-lg-flex align-items-center justify-content-between d-none d-sm-none d-md-none d-lg-block"
+      >
+        <div class="d-flex align-items-center">
+          <div class="button-add-trip_icon">
+            <i class="fas fa-map-marked fa-2x"></i>
+          </div>
+          <h2 class="button-add-trip_title">Plan your next trip</h2>
+        </div>
+        <div class="button-add-trip_icon">
+          <i class="fas fa-plus fa-2x"></i>
+        </div>
+      </div>
       <!-- List of user trip -->
       <div></div>
     </main>
