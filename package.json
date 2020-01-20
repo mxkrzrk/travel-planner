@@ -21,13 +21,14 @@
   "homepage": "https://github.com/Massimilianok/travel-app#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.4.1",
+    "clean-webpack-plugin": "^3.0.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "html-webpack-plugin": "^3.2.0",
-    "terser-webpack-plugin": "^2.3.2",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "mini-css-extract-plugin": "^0.9.0",
-    "clean-webpack-plugin": "^3.0.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "terser-webpack-plugin": "^2.3.2",
     "webpack": "^4.41.5"
   },
   "devDependencies": {

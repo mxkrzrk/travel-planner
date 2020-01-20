@@ -1,5 +1,10 @@
-$color: green;
+// Bootstrap
+@import '~bootstrap/dist/css/bootstrap-reboot.css';
+@import '~bootstrap/dist/css/bootstrap-grid.css';
 
-h1 {
-  color: $color;
-}
+// Variables
+@import './variables.scss';
+
+// Components
+@import './components/typography.scss';
+@import './components/nav.scss';
