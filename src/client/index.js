@@ -1,4 +1,5 @@
-import helloWorld from './js/app'
+import App from './js/app'
 import './styles/app.scss'
 
-helloWorld()
+const addTripButton = document.getElementById('addTripPlan')
+addTripButton.addEventListener('click', App.tripCreationForm)
