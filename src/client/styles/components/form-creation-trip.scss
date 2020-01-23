@@ -6,6 +6,16 @@
   height: 100%;
   background-color: $secondary-color;
 
+  .form-creation-trip_close-icon {
+    color: $yellow-color;
+    position: inherit;
+    top: 0;
+    left: 0;
+    padding: $one-space;
+    font-size: 25px;
+    cursor: pointer;
+  }
+
   .form-creation-trip_heading {
     padding: $one-space;
     background-color: $primary-color;
