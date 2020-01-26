@@ -1,10 +1,8 @@
-import * as TripCreation from './tripCreation'
+import Trip from './trip'
 
 const tripCreationForm = () => {
-  TripCreation.formCreationContainer()
-  TripCreation.closeCreationContainer()
-  TripCreation.formCreationHeading()
-  TripCreation.formCreationStep()
+  const tripCreation = new Trip('tripCreationForm')
+  tripCreation.formCreationInit()
 }
 
 export default tripCreationForm
