@@ -2,9 +2,6 @@ class Trip {
   constructor(elementId) {
     this.formCreationAppend = document.getElementById(elementId)
     this.formCreationContainerAppend = null
-    this.formCreationNavigatorAppend = null
-    this.formCreationStepAppend = null
-    this.formCreationStepValue = 0
   }
 
   // Initialization trip creation form
@@ -12,20 +9,8 @@ class Trip {
     this.formCreationContainer()
     this.closeFormCreationContainer()
     this.formCreationHeading()
-    this.formCreationNavigator()
-    this.formCreationStep()
-  }
-
-  get formCreationContainerNode() {
-    return this.formCreationContainerAppend
-  }
-
-  get formCreationNavigatorNode() {
-    return this.formCreationNavigatorAppend
-  }
-
-  get formCreationStepNode() {
-    return this.formCreationStepAppend
+    this.formCreationCityInput()
+    this.formCreationDateInput()
   }
 
   // Add the container for the trip creation form
@@ -55,7 +40,7 @@ class Trip {
       closeFormContent
     )
 
-    // Close node
+    // Close the trip creation form
     const closeFormContainer = document.getElementById('formCreationClose')
     closeFormContainer.addEventListener('click', () => {
       this.formCreationAppend.removeChild(this.formCreationContainerAppend)
@@ -80,92 +65,65 @@ class Trip {
     )
   }
 
-  // Add navigator for the steps of the trip creation form
-  formCreationNavigator() {
-    const formNavigator = `
-      <div class="row form-creation-trip_navigator d-flex justify-content-between align-itmes-center" id="formCreationNavigator">
-        <div id="back">
-          <i class="fas fa-arrow-left"></i>
-        </div>
-        <div class="form-creation-trip_navigator-status d-flex justify-content-center align-items-center"></div>
-        <div id="next">
-          <i class="fas fa-arrow-right"></i>
-        </div>
-      </div>
-    `
-    this.formCreationContainerAppend.insertAdjacentHTML(
-      'beforeend',
-      formNavigator
-    )
-
-    // Navigator node
-    this.formCreationNavigatorAppend = document.getElementById(
-      'formCreationNavigator'
-    )
-  }
-
-  // Clear the trip creation form navigator
-  clearFormCreationNavigator() {
-    this.formCreationContainerAppend.removeChild(
-      this.formCreationNavigatorAppend
-    )
-  }
-
-  // Clear the trip creation form step template
-  clearFormCreationStep() {
-    this.formCreationContainerAppend.removeChild(this.formCreationStepAppend)
-  }
-
-  // Add the step template for the trip creation form
-  formCreationStep() {
+  // Add city input for the trip creation form
+  formCreationCityInput() {
     const formStepCity = `
-      <div class="row form-creation-trip_step" id="formCreationStepAppend">
-        <div class="col-12 d-flex justify-content-center align-items-center form-creation-trip_step-heading">
+      <div class="row form-creation-trip_step">
+        <div class="col-12 col-sm-12 col-md-5 d-flex justify-content-center justify-content-sm-center justify-content-md-start align-items-center form-creation-trip_step-heading">
           <div id="test" class="form-creation-trip_step-heading-icon d-flex justify-content-center align-items-center">
             <i class="fas fa-map-marker-alt"></i>
           </div>    
           <label for="city">Enter the City</label>
         </div>
-        <div class="col-12 d-flex flex-column justify-content-center align-items-center form-creation-trip_step-input">
+        <div class="col-12 col-sm-12 col-md-5 d-flex flex-column justify-content-center justify-content-sm-center justify-content-md-start align-items-center form-creation-trip_step-input">
           <input type="text" id="city"/>
         </div>
       </div>
     `
+    this.formCreationContainerAppend.insertAdjacentHTML(
+      'beforeend',
+      formStepCity
+    )
+  }
+
+  // Add date input for the trip creation form
+  formCreationDateInput() {
+    // Get today date
+    const date = new Date()
+    const day = date.getDate()
+    const dayDoubleDigit = day < 10 ? `0${day}` : day
+    const mounth = date.getMonth() + 1
+    const mounthDoubleDigit = mounth < 10 ? `0${mounth}` : mounth
+    const fullYear = date.getFullYear()
+    const today = `${fullYear}-${mounthDoubleDigit}-${dayDoubleDigit}`
 
     const formStepDate = `
-      <div class="row form-creation-trip_step" id="formCreationStepAppend">
-        <div class="col-12 d-flex justify-content-center align-items-center form-creation-trip_step-heading">
+      <div class="row form-creation-trip_step">
+        <div class="col-12 col-sm-12 col-md-5 d-flex justify-content-center justify-content-sm-center justify-content-md-start align-items-center form-creation-trip_step-heading">
           <div id="test" class="form-creation-trip_step-heading-icon d-flex justify-content-center align-items-center">
             <i class="far fa-calendar"></i>
           </div>    
-          <label for="city">Enter the start date</label>
+          <label for="dateStart">Enter the Start date</label>
         </div>
-        <div class="col-12 d-flex flex-column justify-content-center align-items-center form-creation-trip_step-input">
-          <input type="text" id="city"/>
+        <div class="col-12 col-sm-12 col-md-5 d-flex flex-column justify-content-center justify-content-sm-center justify-content-md-start align-items-center form-creation-trip_step-input">
+          <input type="date" id="dateStart" min="${today}" value="${today}"/>
+        </div>
+      </div>
+      <div class="row form-creation-trip_step">
+        <div class="col-12 col-sm-12 col-md-5 d-flex justify-content-center justify-content-sm-center justify-content-md-start align-items-center form-creation-trip_step-heading">
+          <div id="test" class="form-creation-trip_step-heading-icon d-flex justify-content-center align-items-center">
+            <i class="fas fa-calendar"></i>
+          </div>    
+          <label for="dateEnd">Enter the End date</label>
+        </div>
+        <div class="col-12 col-sm-12 col-md-5 d-flex flex-column justify-content-center justify-content-sm-center justify-content-md-start align-items-center form-creation-trip_step-input">
+          <input type="date" id="dateEnd" min="${today}" value="${today}"/>
         </div>
       </div>
     `
-
-    switch (this.formCreationStepValue) {
-      case 0:
-        this.formCreationContainerAppend.insertAdjacentHTML(
-          'beforeend',
-          formStepCity
-        )
-        break
-      case 1:
-        this.formCreationContainerAppend.insertAdjacentHTML(
-          'beforeend',
-          formStepDate
-        )
-        break
-      default:
-        break
-    }
-
-    // Step node
-    this.formCreationStepAppend = document.getElementById(
-      'formCreationStepAppend'
+    this.formCreationContainerAppend.insertAdjacentHTML(
+      'beforeend',
+      formStepDate
     )
   }
 }
