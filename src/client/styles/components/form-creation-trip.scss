@@ -7,18 +7,28 @@
   background-color: $secondary-color;
 
   .form-creation-trip_close-icon {
-    color: $yellow-color;
-    position: inherit;
-    top: 0;
-    left: 0;
-    padding: $one-space;
-    font-size: 25px;
+    color: $light-color;
+    background-color: $secondary-color;
+    padding: 0.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .form-creation-trip_save-icon {
+    color: $dark-color;
+    background-color: $yellow-color;
+    padding: 0.5rem;
+    border-radius: 10px;
     cursor: pointer;
   }
 
   .form-creation-trip_heading {
     padding: $one-space;
     background-color: $primary-color;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
 
     .form-creation-trip_heading-icon {
       color: $yellow-color;
@@ -29,20 +39,6 @@
       text-align: center;
       color: $light-color;
       margin-bottom: 0;
-    }
-  }
-
-  .form-creation-trip_navigator {
-    background-color: $yellow-color;
-    color: $secondary-color;
-    padding: $one-space;
-
-    .form-creation-trip_navigator-status {
-      font-weight: 700;
-    }
-
-    i {
-      cursor: pointer;
     }
   }
 
@@ -88,5 +84,9 @@
         outline: none;
       }
     }
+  }
+
+  .form-creation-trip_step:last-of-type {
+    padding-bottom: $double-space * 3;
   }
 }

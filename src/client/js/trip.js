@@ -1,68 +1,67 @@
+// Create the trip creation form
 class Trip {
   constructor(elementId) {
-    this.formCreationAppend = document.getElementById(elementId)
-    this.formCreationContainerAppend = null
+    this.formCreationNode = document.getElementById(elementId)
+    this.formCreationContainerNode = null
+    this.closeFormContainerNode = null
+    this.saveFormContainerNode = null
+  }
+
+  get getFormCreationNode() {
+    return this.formCreationNode
+  }
+
+  get getFormCreationContainerNode() {
+    return this.formCreationContainerNode
+  }
+
+  get getCloseFormContainerNode() {
+    return this.closeFormContainerNode
+  }
+
+  get getSaveFormContainerNode() {
+    return this.saveFormContainerNode
   }
 
   // Initialization trip creation form
   formCreationInit() {
     this.formCreationContainer()
-    this.closeFormCreationContainer()
     this.formCreationHeading()
     this.formCreationCityInput()
     this.formCreationDateInput()
   }
 
-  // Add the container for the trip creation form
+  // Add the container
   formCreationContainer() {
     const formContainerContent = `
-      <div class="form-creation-trip container-fluid" id="formCreationContainer">
-      </div>
-    `
-    this.formCreationAppend.insertAdjacentHTML(
-      'afterbegin',
-      formContainerContent
-    )
-
-    // Container node
-    this.formCreationContainerAppend = document.getElementById(
+      <div class="form-creation-trip container-fluid" id="formCreationContainer"></div>`
+    this.formCreationNode.insertAdjacentHTML('afterbegin', formContainerContent)
+    // Create container node
+    this.formCreationContainerNode = document.getElementById(
       'formCreationContainer'
     )
-  }
-
-  // Add close button for the trip creation form
-  closeFormCreationContainer() {
-    const closeFormContent = `
-      <div class="form-creation-trip_close-icon" id="formCreationClose"><i class="fas fa-times"></i></div>
-    `
-    this.formCreationContainerAppend.insertAdjacentHTML(
-      'afterbegin',
-      closeFormContent
-    )
-
-    // Close the trip creation form
-    const closeFormContainer = document.getElementById('formCreationClose')
-    closeFormContainer.addEventListener('click', () => {
-      this.formCreationAppend.removeChild(this.formCreationContainerAppend)
-    })
-    document.addEventListener('keydown', e => {
-      if (e.keyCode === 27) {
-        this.formCreationAppend.innerHTML = ''
-      }
-    })
   }
 
   // Add the heading for the trip creation form
   formCreationHeading() {
     const formHeading = `
-      <div class="row d-flex justify-content-center align-items-center form-creation-trip_heading">
-        <h2 class="form-creation-trip_heading-title">Plan your trip</h2>
+      <div class="row d-flex justify-content-between align-items-center form-creation-trip_heading">
+        <div class="form-creation-trip_close-icon" id="formCreationClose">
+          <i class="fas fa-arrow-left"></i>
+          <span>Back</span>
+        </div>
+        <h3 class="form-creation-trip_heading-title">Plan your trip</h3>
+        <div class="form-creation-trip_save-icon" id="formCreationSave">
+          <i class="far fa-save"></i>
+          <span>Save</span>
+        </div>
       </div>
     `
-    this.formCreationContainerAppend.insertAdjacentHTML(
-      'afterbegin',
-      formHeading
-    )
+    this.formCreationContainerNode.insertAdjacentHTML('afterbegin', formHeading)
+    // Create close node
+    this.closeFormContainerNode = document.getElementById('formCreationClose')
+    // Create save node
+    this.saveFormContainerNode = document.getElementById('formCreationSave')
   }
 
   // Add city input for the trip creation form
@@ -80,10 +79,7 @@ class Trip {
         </div>
       </div>
     `
-    this.formCreationContainerAppend.insertAdjacentHTML(
-      'beforeend',
-      formStepCity
-    )
+    this.formCreationContainerNode.insertAdjacentHTML('beforeend', formStepCity)
   }
 
   // Add date input for the trip creation form
@@ -121,10 +117,7 @@ class Trip {
         </div>
       </div>
     `
-    this.formCreationContainerAppend.insertAdjacentHTML(
-      'beforeend',
-      formStepDate
-    )
+    this.formCreationContainerNode.insertAdjacentHTML('beforeend', formStepDate)
   }
 }
 
