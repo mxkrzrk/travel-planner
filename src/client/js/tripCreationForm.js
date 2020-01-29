@@ -11,6 +11,7 @@ class TripCreationForm extends Trip {
     this.cityInputNode = null
     this.startDateInputNode = null
     this.endDateInputNode = null
+    this.countryCodeInputNode = null
   }
 
   get getFormCreationNode() {
@@ -31,6 +32,10 @@ class TripCreationForm extends Trip {
 
   get getCityInputNode() {
     return this.cityInputNode
+  }
+
+  get getCountryCodeInputNode() {
+    return this.countryCodeInputNode
   }
 
   get getStartDateInputNode() {
@@ -92,14 +97,17 @@ class TripCreationForm extends Trip {
           </div>    
           <label for="city">Enter the City</label>
         </div>
-        <div class="col-12 col-sm-12 col-md-5 d-flex flex-column justify-content-center justify-content-sm-center justify-content-md-start align-items-center form-creation-trip_step-input">
-          <input type="text" id="city"/>
+        <div class="col-12 col-sm-12 col-md-5 d-flex justify-content-center justify-content-sm-center justify-content-md-start align-items-center form-creation-trip_step-input">
+          <input type="text" id="city" placeholder="City" />
+          <input type="text" id="countryCode" placeholder="Country code" />
         </div>
       </div>
     `
     this.formCreationContainerNode.insertAdjacentHTML('beforeend', formStepCity)
     // City input node
     this.cityInputNode = document.getElementById('city')
+    // Country code input node
+    this.countryCodeInputNode = document.getElementById('countryCode')
   }
 
   // Add date input for the trip creation form
@@ -122,7 +130,7 @@ class TripCreationForm extends Trip {
           <label for="startDate">Enter the Start date</label>
         </div>
         <div class="col-12 col-sm-12 col-md-5 d-flex flex-column justify-content-center justify-content-sm-center justify-content-md-start align-items-center form-creation-trip_step-input">
-          <input type="date" id="startDate" min="${today}" value="${today}"/>
+          <input type="date" id="startDate" min="${today}" value="${today}" />
         </div>
       </div>
       <div class="row form-creation-trip_step">
@@ -133,7 +141,7 @@ class TripCreationForm extends Trip {
           <label for="endDate">Enter the End date</label>
         </div>
         <div class="col-12 col-sm-12 col-md-5 d-flex flex-column justify-content-center justify-content-sm-center justify-content-md-start align-items-center form-creation-trip_step-input">
-          <input type="date" id="endDate" min="${today}" value="${today}"/>
+          <input type="date" id="endDate" min="${today}" value="${today}" />
         </div>
       </div>
     `

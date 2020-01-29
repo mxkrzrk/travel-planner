@@ -44,7 +44,7 @@
 
   .form-creation-trip_step {
     background-color: $secondary-color;
-    padding: $double-space;
+    padding: $one-space;
 
     .form-creation-trip_step-heading {
       height: 20%;
@@ -78,6 +78,11 @@
         color: $light-color;
         padding: $one-space;
         width: 90%;
+        margin: 0 5px;
+      }
+
+      input::placeholder {
+        color: rgba($color: $light-color, $alpha: 0.7)
       }
 
       input:focus {
