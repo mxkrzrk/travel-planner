@@ -141,7 +141,7 @@ class TripCreationForm extends Trip {
           <label for="endDate">Enter the End date</label>
         </div>
         <div class="col-12 col-sm-12 col-md-5 d-flex flex-column justify-content-center justify-content-sm-center justify-content-md-start align-items-center form-creation-trip_step-input">
-          <input type="date" id="endDate" min="${today}" value="${today}" />
+          <input type="date" id="endDate" min="${this.startDate}" value="${today}" />
         </div>
       </div>
     `

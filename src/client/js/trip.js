@@ -8,42 +8,26 @@ class Trip {
     this.lat = ''
     this.startDate = ''
     this.endDate = ''
+    this.forecastSummary = ''
+    this.forecastIcon = ''
+    this.temperatureMax = ''
+    this.temperatureMin = ''
   }
 
   set setCity(city) {
     this.city = city.trim().toLowerCase()
   }
 
-  get getCity() {
-    return this.city
-  }
-
   set setCountryCode(countryCode) {
     this.countryCode = countryCode.trim().toLowerCase()
-  }
-
-  get getCountryCode() {
-    return this.countryCode
-  }
-
-  get getCountry() {
-    return this.country
   }
 
   set setStartDate(startDate) {
     this.startDate = startDate
   }
 
-  get getStartDate() {
-    return this.startDate
-  }
-
   set setEndDate(endDate) {
     this.endDate = endDate
-  }
-
-  get getEndDate() {
-    return this.endDate
   }
 
   async fetchParamCity(url, username) {
@@ -57,7 +41,18 @@ class Trip {
     this.lng = cityObj.lng
     this.lat = cityObj.lat
     this.country = cityObj.countryName
-    return cityObj
+  }
+
+  async fetchForecast(url, APIkey) {
+    const date = new Date(this.startDate).getTime() / 1000
+    const response = await fetch(
+      `${url}/${APIkey}/${this.lat},${this.lng},${date.toString()}?units=si`
+    )
+    const json = await response.json()
+    this.forecastSummary = json.daily.data[0].summary
+    this.forecastIcon = json.daily.data[0].icon
+    this.temperatureMax = Math.round(json.daily.data[0].temperatureMax)
+    this.temperatureMin = Math.round(json.daily.data[0].temperatureMin)
   }
 }
 

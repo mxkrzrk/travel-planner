@@ -3,6 +3,9 @@ import TripCreationForm from './tripCreationForm'
 const geonamesApiUrl = 'http://api.geonames.org/searchJSON?'
 const geonamesApiUsername = 'massimilianok'
 
+const darkskyApiUrl = 'https://api.darksky.net/forecast'
+const darkskyApiKey = '131f950067414dded67a5dad8968a157'
+
 const tripCreationForm = () => {
   // Create the trip creation form
   const tripCreation = new TripCreationForm('tripCreationForm')
@@ -20,6 +23,16 @@ const tripCreationForm = () => {
     }
   })
 
+  // Add listener for change end date related to start date
+  tripCreation.getStartDateInputNode.addEventListener('change', () => {
+    tripCreation.getEndDateInputNode.value =
+      tripCreation.getStartDateInputNode.value
+    tripCreation.getEndDateInputNode.setAttribute(
+      'min',
+      tripCreation.getStartDateInputNode.value
+    )
+  })
+
   // Add listener for save the date in the form
   tripCreation.getSaveFormContainerNode.addEventListener('click', () => {
     // Check if the inputs are empty
@@ -34,12 +47,11 @@ const tripCreationForm = () => {
       tripCreation.setCountryCode = tripCreation.getCountryCodeInputNode.value
       tripCreation.setStartDate = tripCreation.getStartDateInputNode.value
       tripCreation.setEndDate = tripCreation.getEndDateInputNode.value
+      // Retrieve data from all APIs
       tripCreation
         .fetchParamCity(geonamesApiUrl, geonamesApiUsername)
-        .then(res => {
-          console.log(res)
-          console.log(tripCreation)
-        })
+        .then(() => tripCreation.fetchForecast(darkskyApiUrl, darkskyApiKey))
+        .then(() => console.log(tripCreation))
         .catch(error => console.error('Error:', error))
     } else {
       console.log('All input are required!')
