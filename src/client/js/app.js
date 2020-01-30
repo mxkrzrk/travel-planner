@@ -43,6 +43,12 @@ const tripCreationForm = () => {
 
   // Add listener for save the date in the form
   tripCreation.getSaveFormContainerNode.addEventListener('click', () => {
+    // Clear error message
+    if (tripCreation.getFormCreationErrorMessageNode) {
+      tripCreation.getFormCreationContainerNode.removeChild(
+        tripCreation.getFormCreationErrorMessageNode
+      )
+    }
     // Check if the inputs are empty
     if (
       tripCreation.getCityInputNode.value !== '' &&
@@ -60,9 +66,13 @@ const tripCreationForm = () => {
         .fetchParamCity(geonamesApiUrl, geonamesApiUsername)
         .then(() => tripCreation.fetchForecast(darkskyApiUrl, darkskyApiKey))
         .then(() => tripCreation.fecthCityPhoto(pixabayUrl, pixabayApiKey))
-        .catch(error => console.error('Error:', error))
+        .catch(() =>
+          tripCreation.formCreationErrorMessage(
+            'Something went wrong try again later!'
+          )
+        )
     } else {
-      console.log('All input are required!')
+      tripCreation.formCreationErrorMessage('All fields are required!')
     }
   })
 }

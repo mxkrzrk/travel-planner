@@ -12,6 +12,7 @@ class TripCreationForm extends Trip {
     this.startDateInputNode = null
     this.endDateInputNode = null
     this.countryCodeInputNode = null
+    this.formCreationErrorMessageNode = null
   }
 
   get getFormCreationNode() {
@@ -46,6 +47,10 @@ class TripCreationForm extends Trip {
     return this.endDateInputNode
   }
 
+  get getFormCreationErrorMessageNode() {
+    return this.formCreationErrorMessageNode
+  }
+
   // Initialization trip creation form
   formCreationInit() {
     this.formCreationContainer()
@@ -62,6 +67,19 @@ class TripCreationForm extends Trip {
     // Create container node
     this.formCreationContainerNode = document.getElementById(
       'formCreationContainer'
+    )
+  }
+
+  formCreationErrorMessage(errorMessage) {
+    const formErrorMessage = `
+      <div class="form-creation-trip_error" id="formCreationErrorMessage">${errorMessage}</div>
+    `
+    this.formCreationContainerNode.insertAdjacentHTML(
+      'afterbegin',
+      formErrorMessage
+    )
+    this.formCreationErrorMessageNode = document.getElementById(
+      'formCreationErrorMessage'
     )
   }
 

@@ -22,6 +22,15 @@
     cursor: pointer;
   }
 
+  .form-creation-trip_error {
+    background-color: $danger-color;
+    color: $light-color;
+    padding: $one-space;
+    margin: $one-space;
+    border-radius: 10px;
+    text-align: center;
+  }
+
   .form-creation-trip_heading {
     padding: $one-space;
     background-color: $primary-color;
@@ -82,7 +91,7 @@
       }
 
       input::placeholder {
-        color: rgba($color: $light-color, $alpha: 0.7)
+        color: rgba($color: $light-color, $alpha: 0.7);
       }
 
       input:focus {

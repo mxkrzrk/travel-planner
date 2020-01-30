@@ -10,6 +10,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   devtool: 'inline-source-map',
+  devServer: {
+    host: '0.0.0.0'
+  },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
