@@ -1,10 +1,14 @@
+import Trip from './trip'
 import TripCreationForm from './tripCreationForm'
 
 const geonamesApiUrl = 'http://api.geonames.org/searchJSON?'
-const geonamesApiUsername = 'massimilianok'
-
+let geonamesApiUsername = ''
 const darkskyApiUrl = 'https://api.darksky.net/forecast'
-const darkskyApiKey = '131f950067414dded67a5dad8968a157'
+let darkskyApiKey = ''
+Trip.fetchApiKeys().then(res => {
+  geonamesApiUsername = res.geonamesApiUsername
+  darkskyApiKey = res.darkskyApiKey
+})
 
 const tripCreationForm = () => {
   // Create the trip creation form
@@ -59,4 +63,4 @@ const tripCreationForm = () => {
   })
 }
 
-export default tripCreationForm
+export default { tripCreationForm }

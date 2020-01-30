@@ -12,6 +12,7 @@ class Trip {
     this.forecastIcon = ''
     this.temperatureMax = ''
     this.temperatureMin = ''
+    this.genamesApiUsername = ''
   }
 
   set setCity(city) {
@@ -28,6 +29,12 @@ class Trip {
 
   set setEndDate(endDate) {
     this.endDate = endDate
+  }
+
+  static async fetchApiKeys() {
+    const response = await fetch('http://localhost:8000/api-credentials')
+    const json = await response.json()
+    return json
   }
 
   async fetchParamCity(url, username) {

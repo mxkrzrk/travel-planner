@@ -1,5 +1,5 @@
-import tripCreationForm from './js/app'
+import App from './js/app'
 import './styles/index.scss'
 
 const addTripButton = document.getElementById('addTripPlan')
-addTripButton.addEventListener('click', tripCreationForm)
+addTripButton.addEventListener('click', App.tripCreationForm)
