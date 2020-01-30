@@ -12,7 +12,7 @@ class Trip {
     this.forecastIcon = ''
     this.temperatureMax = ''
     this.temperatureMin = ''
-    this.genamesApiUsername = ''
+    this.cityPhotoUrl = ''
   }
 
   set setCity(city) {
@@ -60,6 +60,16 @@ class Trip {
     this.forecastIcon = json.daily.data[0].icon
     this.temperatureMax = Math.round(json.daily.data[0].temperatureMax)
     this.temperatureMin = Math.round(json.daily.data[0].temperatureMin)
+  }
+
+  async fecthCityPhoto(url, APIkey) {
+    const response = await fetch(
+      `${url}?key=${APIkey}&q=${this.city}&image_type=photo`
+    )
+    const json = await response.json()
+    // Random photo
+    const randomHits = Math.floor(Math.random(json.totalHits) * 10)
+    this.cityPhotoUrl = json.hits[randomHits].largeImageURL
   }
 }
 

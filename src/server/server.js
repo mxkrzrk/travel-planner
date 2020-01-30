@@ -26,7 +26,8 @@ app.use(express.static('./dist'))
 // API endpoint
 const apiKeys = {
   geonamesApiUsername: process.env.GEONAMES_API_USERNAME,
-  darkskyApiKey: process.env.DARKSKY_API_KEY
+  darkskyApiKey: process.env.DARKSKY_API_KEY,
+  pixabayApiKey: process.env.PIXABAY_API_KEY
 }
 
 app.get('/api-credentials', (req, res) => {

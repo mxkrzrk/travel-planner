@@ -5,9 +5,13 @@ const geonamesApiUrl = 'http://api.geonames.org/searchJSON?'
 let geonamesApiUsername = ''
 const darkskyApiUrl = 'https://api.darksky.net/forecast'
 let darkskyApiKey = ''
+const pixabayUrl = 'https://pixabay.com/api/'
+let pixabayApiKey = ''
+
 Trip.fetchApiKeys().then(res => {
   geonamesApiUsername = res.geonamesApiUsername
   darkskyApiKey = res.darkskyApiKey
+  pixabayApiKey = res.pixabayApiKey
 })
 
 const tripCreationForm = () => {
@@ -55,7 +59,7 @@ const tripCreationForm = () => {
       tripCreation
         .fetchParamCity(geonamesApiUrl, geonamesApiUsername)
         .then(() => tripCreation.fetchForecast(darkskyApiUrl, darkskyApiKey))
-        .then(() => console.log(tripCreation))
+        .then(() => tripCreation.fecthCityPhoto(pixabayUrl, pixabayApiKey))
         .catch(error => console.error('Error:', error))
     } else {
       console.log('All input are required!')
