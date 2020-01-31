@@ -71,6 +71,24 @@ class Trip {
     const randomHits = Math.floor(Math.random(json.totalHits) * 10)
     this.cityPhotoUrl = json.hits[randomHits].largeImageURL
   }
+
+  saveLocalStorage() {
+    const tripInfo = {
+      city: this.city,
+      country: this.country,
+      startDate: this.startDate,
+      endDate: this.endDate,
+      forecastSummary: this.forecastSummary,
+      forecastIcon: this.forecastIcon,
+      temperatureMax: this.temperatureMax,
+      temperatureMin: this.temperatureMin,
+      cityPhotoUrl: this.cityPhotoUrl
+    }
+    localStorage.setItem(
+      this.city.toLocaleLowerCase(),
+      JSON.stringify(tripInfo)
+    )
+  }
 }
 
 export default Trip

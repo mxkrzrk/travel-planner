@@ -1,5 +1,4 @@
 const express = require('express')
-const http = require('http')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const dotenv = require('dotenv')
@@ -7,13 +6,10 @@ const dotenv = require('dotenv')
 // dotenv for the enviroment variables
 dotenv.config()
 
-// Create and listen server in the local network
+// Create and listen local server
 const app = express()
 const port = 8000
-const server = http.createServer(app)
-server.listen(port, process.env.BASE_URL, () =>
-  console.log(`Server running on port: ${port}`)
-)
+app.listen(port, () => console.log(`Server running on port: ${port}`))
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }))
