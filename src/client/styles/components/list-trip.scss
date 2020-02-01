@@ -1,0 +1,126 @@
+.list-trip {
+  padding: $double-space $one-space;
+
+  .list-trip_container {
+    color: $light-color;
+    box-shadow: $shadow-box $shadow-box-color;
+    border-radius: 10px;
+
+    .list-trip_title {
+      padding: $one-space;
+      border-radius: 10px 10px 0 0;
+      background-color: $secondary-color;
+
+      .list-trip_title-text {
+        position: absolute;
+        top: 50px;
+        left: 40px;
+        z-index: 500;
+        color: $light-color;
+      }
+
+      .list-trip_title-image {
+        position: relative;
+
+        .list-trip_title-image-photo {
+          width: 100%;
+          border-radius: 10px;
+        }
+
+        .list-trip_title-image-photo--overlay {
+          background-color: rgba($color: $secondary-color, $alpha: 0.4);
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: inherit;
+        }
+      }
+
+      .list-trip_title-forecasts {
+        padding: $one-space 0;
+
+        div {
+          padding-right: $one-space;
+
+          i {
+            color: $orange-color;
+            padding-right: $one-space / 2;
+          }
+        }
+      }
+    }
+
+    .list-trip_date {
+      background-color: $primary-color;
+      border-radius: 0 0 10px 10px;
+      height: 100%;
+      padding: $one-space;
+
+      .list-trip_date-calendar {
+        padding: $one-space $one-space $one-space 0;
+
+        i {
+          padding: 0 10px;
+          color: $yellow-color;
+        }
+
+        span {
+          padding: 0 5px;
+        }
+
+        .list-trip_date-calendar-highlight {
+          color: $yellow-color;
+        }
+      }
+
+      .list-trip_date-button {
+        padding-top: $one-space;
+
+        button {
+          border: 1px solid transparent;
+          border-radius: 50%;
+          padding: $one-space / 2;
+          color: $light-color;
+          background-color: $danger-color;
+          outline: none;
+          width: 40px;
+          height: 40px;
+        }
+
+        button:active {
+          background-color: rgba($color: $danger-color, $alpha: 0.5);
+        }
+      }
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .list-trip {
+    .list-trip_container {
+      border-radius: 10px;
+
+      .list-trip_title {
+        border-radius: 10px 0 0 10px;
+        height: 100%;
+
+        .list-trip_title-image {
+          .list-trip_title-image-photo {
+            border-radius: 10px;
+          }
+
+          .list-trip_title-image-photo--overlay {
+            border-radius: inherit;
+          }
+        }
+      }
+
+      .list-trip_date {
+        border-radius: 0 10px 10px 0;
+      }
+    }
+  }
+}

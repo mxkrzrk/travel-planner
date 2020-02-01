@@ -83,4 +83,8 @@ const tripCreationForm = () => {
   })
 }
 
-export default { tripCreationForm }
+const tripList = () => {
+  console.log(Object.keys(localStorage))
+}
+
+export default { tripCreationForm, tripList }

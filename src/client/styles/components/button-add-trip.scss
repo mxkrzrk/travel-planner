@@ -9,6 +9,7 @@
   right: 0;
   margin: $one-space;
   box-shadow: $shadow-box $shadow-box-color;
+  z-index: 1000;
 
   .button-add-trip_icon--mobile {
     color: $orange-color;
