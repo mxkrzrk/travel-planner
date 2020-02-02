@@ -33,6 +33,7 @@
   border-radius: $border-radius-card;
   background-color: $secondary-color;
   cursor: pointer;
+  transition: background-color 0.3s ease-out;
 
   .button-add-trip_icon {
     padding: $double-space;
@@ -44,6 +45,10 @@
     padding: $double-space;
     color: $light-color;
   }
+}
+
+.button-add-trip:hover {
+  background-color: $primary-color;
 }
 
 .button-add-trip:active {
