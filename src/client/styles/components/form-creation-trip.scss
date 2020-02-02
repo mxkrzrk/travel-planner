@@ -5,6 +5,7 @@
   z-index: 3000;
   height: 100%;
   background-color: $secondary-color;
+  overflow-y: scroll;
 
   .form-creation-trip_close-icon {
     color: $light-color;

@@ -51,9 +51,7 @@ class TripList extends Trip {
                 <span>${tempMin === 'undefined' ? 'n/a' : tempMin}</span>
               </div>
               <div class="d-flex">
-                <span>${
-                  tempSummary === 'undefined' ? 'n/a' : tempSummary
-                }</span>
+                <span>${tempSummary === undefined ? 'n/a' : tempSummary}</span>
               </div>
             </div>
           </div>
@@ -66,7 +64,7 @@ class TripList extends Trip {
     )
   }
 
-  tripListDateBox(startDate, endDate, lenght) {
+  tripListDateBox(tripId, startDate, endDate, lenght) {
     const today = getToday()
     const countdown = getTravelLenght(today, endDate)
     const tripListDateBoxContent = `
@@ -75,8 +73,8 @@ class TripList extends Trip {
           <div
             class="list-trip_date-button d-flex justify-content-end align-items-center"
           >
-            <button class="d-flex justify-content-center align-items-center">
-              <i class="fas fa-trash"></i>
+            <button class="d-flex justify-content-center align-items-center" data-tripid="${tripId}">
+              <i class="fas fa-trash" data-tripid="${tripId}"></i>
             </button>
           </div>
           <div class="list-trip_date-calendar">

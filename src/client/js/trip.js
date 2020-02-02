@@ -80,6 +80,7 @@ class Trip {
     this.travelLength = getTravelLenght(this.startDate, this.endDate)
 
     const tripInfo = {
+      id: Math.floor(Math.random() * 1000),
       city: this.city,
       country: this.country,
       startDate: this.startDate,
@@ -91,9 +92,9 @@ class Trip {
       cityPhotoUrl: this.cityPhotoUrl,
       travelLength: this.travelLength
     }
-    const trip = JSON.parse(localStorage.getItem('tripList'))
-    trip.push(tripInfo)
-    localStorage.setItem('tripList', JSON.stringify(trip))
+    const tripInfoList = JSON.parse(localStorage.getItem('tripList'))
+    tripInfoList.push(tripInfo)
+    localStorage.setItem('tripList', JSON.stringify(tripInfoList))
   }
 
   loadLocalStorage() {
@@ -102,6 +103,13 @@ class Trip {
     } else {
       localStorage.setItem('tripList', JSON.stringify([]))
     }
+  }
+
+  static deleteTripLocalStorage(tripId) {
+    const tripInfoList = JSON.parse(localStorage.getItem('tripList'))
+    const tripIndex = tripInfoList.findIndex(el => el.id === tripId)
+    tripInfoList.splice(tripIndex, 1)
+    localStorage.setItem('tripList', JSON.stringify(tripInfoList))
   }
 }
 

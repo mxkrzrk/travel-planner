@@ -21,8 +21,22 @@ const tripListHandler = () => {
         el.temperatureMin,
         el.forecastSummary
       )
-      tripListInfo.tripListDateBox(el.startDate, el.endDate, el.travelLength)
+      tripListInfo.tripListDateBox(
+        el.id,
+        el.startDate,
+        el.endDate,
+        el.travelLength
+      )
     })
+  }
+}
+
+// Remove a Trip from list
+const removeTripHandler = e => {
+  const tripId = e.target.dataset.tripid
+  if (tripId) {
+    Trip.deleteTripLocalStorage(tripId)
+    tripListHandler()
   }
 }
 
@@ -49,10 +63,12 @@ const tripCreationFormHandler = () => {
     tripCreation.getFormCreationNode.removeChild(
       tripCreation.getFormCreationContainerNode
     )
+    document.querySelector('body').style.overflowY = 'scroll'
   })
   document.addEventListener('keydown', e => {
     if (e.keyCode === 27) {
       tripCreation.getFormCreationNode.innerHTML = ''
+      document.querySelector('body').style.overflowY = 'scroll'
     }
   })
 
@@ -95,6 +111,7 @@ const tripCreationFormHandler = () => {
           tripCreation.getFormCreationNode.removeChild(
             tripCreation.getFormCreationContainerNode
           )
+          document.querySelector('body').style.overflowY = 'scroll'
           tripCreation.saveLocalStorage()
         })
         .then(() => {
@@ -113,4 +130,4 @@ const tripCreationFormHandler = () => {
   })
 }
 
-export default { tripListHandler, tripCreationFormHandler }
+export default { tripListHandler, removeTripHandler, tripCreationFormHandler }

@@ -54,6 +54,7 @@ class TripCreationForm extends Trip {
 
   // Initialization trip creation form
   formCreationInit() {
+    document.querySelector('body').style.overflowY = 'hidden'
     this.formCreationContainer()
     this.formCreationHeading()
     this.formCreationCityInput()
