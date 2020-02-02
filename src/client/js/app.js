@@ -1,7 +1,32 @@
 import Trip from './trip'
 import TripCreationForm from './tripCreationForm'
+import TripList from './tripList'
 
-const tripCreationForm = () => {
+const tripListHandler = () => {
+  // Clear Trip List
+  document.getElementById('tripList').innerHTML = ''
+  // Load the data from local storage
+  const tripList = new Trip()
+  tripList.loadLocalStorage()
+  // If list not empty create the Trip List box
+  if (tripList.tripInfoList.length > 0) {
+    const tripListInfo = new TripList('tripList')
+    tripList.tripInfoList.forEach(el => {
+      tripListInfo.tripListContainer()
+      tripListInfo.tripListTitleBox(
+        el.city,
+        el.country,
+        el.cityPhotoUrl,
+        el.temperatureMax,
+        el.temperatureMin,
+        el.forecastSummary
+      )
+      tripListInfo.tripListDateBox(el.startDate, el.endDate, el.travelLength)
+    })
+  }
+}
+
+const tripCreationFormHandler = () => {
   // Fetch APIs credential
   const geonamesApiUrl = 'http://api.geonames.org/searchJSON?'
   let geonamesApiUsername = ''
@@ -72,6 +97,11 @@ const tripCreationForm = () => {
           )
           tripCreation.saveLocalStorage()
         })
+        .then(() => {
+          // Clear List
+          document.getElementById('tripList').innerHTML = ''
+          tripListHandler()
+        })
         .catch(() =>
           tripCreation.formCreationErrorMessage(
             'Something went wrong try again later!'
@@ -83,8 +113,4 @@ const tripCreationForm = () => {
   })
 }
 
-const tripList = () => {
-  console.log(Object.keys(localStorage))
-}
-
-export default { tripCreationForm, tripList }
+export default { tripListHandler, tripCreationFormHandler }

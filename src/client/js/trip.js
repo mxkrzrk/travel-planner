@@ -1,3 +1,5 @@
+import { getTravelLenght } from './helper'
+
 // Create the trip
 class Trip {
   constructor() {
@@ -13,6 +15,8 @@ class Trip {
     this.temperatureMax = ''
     this.temperatureMin = ''
     this.cityPhotoUrl = ''
+    this.travelLength = ''
+    this.tripInfoList = []
   }
 
   set setCity(city) {
@@ -73,6 +77,8 @@ class Trip {
   }
 
   saveLocalStorage() {
+    this.travelLength = getTravelLenght(this.startDate, this.endDate)
+
     const tripInfo = {
       city: this.city,
       country: this.country,
@@ -82,12 +88,20 @@ class Trip {
       forecastIcon: this.forecastIcon,
       temperatureMax: this.temperatureMax,
       temperatureMin: this.temperatureMin,
-      cityPhotoUrl: this.cityPhotoUrl
+      cityPhotoUrl: this.cityPhotoUrl,
+      travelLength: this.travelLength
     }
-    localStorage.setItem(
-      this.city.toLocaleLowerCase(),
-      JSON.stringify(tripInfo)
-    )
+    const trip = JSON.parse(localStorage.getItem('tripList'))
+    trip.push(tripInfo)
+    localStorage.setItem('tripList', JSON.stringify(trip))
+  }
+
+  loadLocalStorage() {
+    if (localStorage.getItem('tripList')) {
+      this.tripInfoList = JSON.parse(localStorage.getItem('tripList'))
+    } else {
+      localStorage.setItem('tripList', JSON.stringify([]))
+    }
   }
 }
 

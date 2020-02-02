@@ -5,6 +5,7 @@
     color: $light-color;
     box-shadow: $shadow-box $shadow-box-color;
     border-radius: 10px;
+    margin-bottom: $one-space;
 
     .list-trip_title {
       padding: $one-space;
@@ -42,11 +43,13 @@
         padding: $one-space 0;
 
         div {
-          padding-right: $one-space;
-
           i {
             color: $orange-color;
-            padding-right: $one-space / 2;
+            padding: $one-space / 2;
+          }
+
+          span {
+            padding: $one-space / 2;
           }
         }
       }

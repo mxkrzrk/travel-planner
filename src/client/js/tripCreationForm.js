@@ -1,3 +1,4 @@
+import { getToday } from './helper'
 import Trip from './trip'
 
 // Create the trip creation form
@@ -130,14 +131,7 @@ class TripCreationForm extends Trip {
 
   // Add date input for the trip creation form
   formCreationDateInput() {
-    // Get today date
-    const date = new Date()
-    const day = date.getDate()
-    const dayDoubleDigit = day < 10 ? `0${day}` : day
-    const mounth = date.getMonth() + 1
-    const mounthDoubleDigit = mounth < 10 ? `0${mounth}` : mounth
-    const fullYear = date.getFullYear()
-    const today = `${fullYear}-${mounthDoubleDigit}-${dayDoubleDigit}`
+    const today = getToday()
 
     const formStepDate = `
       <div class="row form-creation-trip_step">
