@@ -1,4 +1,4 @@
-# Travel App
+# Travel Planner
 * Nanodegree: Front End Developer
 * Module: Capstone
 
